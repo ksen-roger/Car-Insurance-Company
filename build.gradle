@@ -1,0 +1,99 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '4.0.0'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.carinsurance'
+version = '0.0.1-SNAPSHOT'
+description = 'Car Insurance mini project'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.modelmapper:modelmapper:3.2.0'
+//	implementation 'io.beanmapper:beanmapper-spring-boot-starter:2.3.0'
+
+	/* JWT dependency */
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.2'
+
+
+
+
+	/* Spring Security dependency */
+
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+
+
+
+
+
+
+
+
+	/* Bcrypt implementation */
+	implementation 'at.favre.lib:bcrypt:0.10.2'
+
+	/* Swagger */
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.7.0'
+
+	/* Logger */
+	implementation 'log4j:log4j:1.2.17'
+
+
+
+
+	/* For Email and Caches */
+//	implementation 'org.springframework.boot:spring-boot-starter-validation'
+//	implementation 'org.springframework.boot:spring-boot-starter-mail'  // For sending emails
+//	implementation 'org.springframework.boot:spring-boot-starter-cache' // For caching
+//	implementation 'com.github.ben-manes.caffeine:caffeine:3.1.8' // Optional Caffeine cache for in-memory cache
+
+	/* Websocket dependencies. */
+//	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+	// Google API Client
+	implementation 'com.google.api-client:google-api-client:2.2.0'
+
+	// Google OAuth Client with Jetty
+	implementation 'com.google.oauth-client:google-oauth-client-jetty:1.34.1'
+
+	// Google Drive API Service
+	implementation 'com.google.apis:google-api-services-drive:v3-rev20231128-2.0.0'
+
+//	implementation group: 'com.google.apis', name: 'google-api-services-drive', version: 'v3-rev197-1.25.0'
+
+
+
+	/* Commenting out unused dependencies. */
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-authorization-server'
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+
+
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'com.h2database:h2'
+	runtimeOnly 'com.mysql:mysql-connector-j'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

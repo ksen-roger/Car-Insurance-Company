@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Car Insurance System — Glass UI</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="bg-gradient"></div>
+
+<main class="container">
+
+    <!-- Login Card -->
+    <section id="loginCard" class="card center-card">
+        <div class="card-inner">
+            <h1 class="logo">Car<span>Safe</span></h1>
+            <p class="lead">Welcome back — sign in to continue</p>
+            <form id="loginForm" class="form">
+                <div class="field">
+                    <label>Username</label>
+                    <input type="text" name="username" placeholder="admin" required />
+                </div>
+                <div class="field">
+                    <label>Password</label>
+                    <input type="password" name="password" placeholder="1234" required />
+                </div>
+                <div class="actions">
+                    <button type="submit" class="btn primary">Sign in</button>
+                </div>
+            </form>
+            <p class="muted">Use <strong>admin / 1234</strong> for demo login</p>
+        </div>
+    </section>
+
+    <!-- App shell (hidden until login) -->
+    <div id="appShell" class="app-shell hidden">
+        <aside class="sidebar card">
+            <div class="brand">
+                <h2>Car<span>Safe</span></h2>
+            </div>
+            <nav>
+                <button class="nav-btn active" data-section="register">Register</button>
+                <button class="nav-btn" data-section="policy">Policy</button>
+                <button class="nav-btn" data-section="claim">Claim</button>
+                <button class="nav-btn" data-section="report">Reports</button>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="logoutBtn" class="btn ghost">Logout</button>
+            </div>
+        </aside>
+
+        <section class="main-area">
+            <header class="topbar card">
+                <div class="search">
+                    <input id="globalSearch" placeholder="Search registration, name or policy..." />
+                </div>
+                <div class="profile">Admin</div>
+            </header>
+
+            <section class="content">
+                <section id="register" class="section card">
+                    <h3>Register Customer & Car</h3>
+                    <form id="registerForm" class="form">
+                        <div class="grid">
+                            <div class="field"><label>Full Name</label><input name="full_name" required /></div>
+                            <div class="field"><label>Phone</label><input name="phone" required /></div>
+                            <div class="field"><label>Email</label><input type="email" name="email" /></div>
+                            <div class="field"><label>Address</label><input name="address" /></div>
+                            <div class="field"><label>carNumber</label><input name="registration_no" required /></div>
+                            <div class="field"><label>Car Model</label><input name="model" required /></div>
+                            <div class="field"><label>Year</label><input type="number" name="year" min="1980" max="2026" required /></div>
+                        </div>
+                        <div class="actions"><button type="submit" class="btn success">Register</button></div>
+                    </form>
+                </section>
+
+                <section id="policy" class="section card hidden">
+                    <h3>Buy / Renew Policy</h3>
+                    <form id="policyForm" class="form">
+                        <div class="grid">
+                            <div class="field"><label>Car Registration No</label><input name="registration_no" required /></div>
+                            <div class="field"><label>Policy Type</label>
+                                <select name="policy_type" required><option>Comprehensive</option><option>Third Party</option></select></div>
+                            <div class="field"><label>Premium</label><input type="number" name="premium" step="0.01" required /></div>
+                            <div class="field"><label>Coverage Amount</label><input type="number" name="coverage" step="0.01" required /></div>
+                            <div class="field"><label>Start Date</label><input type="date" name="start_date" required /></div>
+                            <div class="field"><label>End Date</label><input type="date" name="end_date" required /></div>
+                        </div>
+                        <div class="actions"><button type="submit" class="btn success">Submit Policy</button></div>
+                    </form>
+                </section>
+
+                <section id="claim" class="section card hidden">
+                    <h3>Submit Claim</h3>
+                    <form id="claimForm" class="form">
+                        <div class="grid">
+                            <div class="field"><label>Policy ID</label><input type="number" name="policy_id" required /></div>
+                            <div class="field"><label>Claim Date</label><input type="date" name="claim_date" required /></div>
+                            <div class="field"><label>Claim Amount</label><input type="number" name="claim_amount" step="0.01" required /></div>
+                            <div class="field full"><label>Description</label><textarea name="description"></textarea></div>
+                        </div>
+                        <div class="actions"><button type="submit" class="btn warn">File Claim</button></div>
+                    </form>
+                </section>
+
+                <section id="report" class="section card hidden">
+                    <h3>Reports</h3>
+                    <div class="muted">Reports will appear here after backend integration.</div>
+                    <div id="reportArea" class="report-area"></div>
+                </section>
+            </section>
+        </section>
+    </div>
+</main>
+
+<!-- Toast / Notifications -->
+<div id="toast" class="toast hidden"></div>
+
+<script src="scripts.js"></script>
+</body>
+</html>
